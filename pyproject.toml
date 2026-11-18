@@ -1,0 +1,12 @@
+[project]
+name = "reconcile-portal"
+version = "0.1.0"
+description = "Local disaster recovery evidence request portal prototype"
+requires-python = ">=3.13,<3.14"
+dependencies = ["fastapi", "jinja2", "uvicorn"]
+
+[dependency-groups]
+dev = ["httpx2", "pytest"]
+
+[tool.uv]
+package = false

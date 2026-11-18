@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidence requests | Disaster Recovery Portal</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f5f8; color: #172c40; font: 1rem/1.55 system-ui, sans-serif; }
+    header { background: #172c40; color: white; padding: 1rem max(1.25rem, calc((100% - 56rem) / 2)); }
+    main { max-width: 58.5rem; margin: 3rem auto; padding: 0 1.25rem; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; }
+    .intro { color: #465a6b; margin-bottom: 2rem; }
+    ul { list-style: none; padding: 0; display: grid; gap: .75rem; }
+    li { background: white; border: 1px solid #d4dce5; border-radius: .65rem; padding: 1.25rem; }
+    .row { display: flex; gap: .5rem 1rem; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+    h2 { margin: 0; font-size: 1.2rem; }
+    .project { margin: 0 0 .3rem; color: #465a6b; font-size: .9rem; }
+    .description { margin: .5rem 0 0; }
+    .status { display: inline-block; border-radius: 1rem; padding: .15rem .65rem; font-size: .85rem; font-weight: 600; }
+    .open { background: #e5edf8; color: #263f69; }
+    .submitted { background: #dff2e7; color: #22563c; }
+    .needs-clarification { background: #fff0cf; color: #694a08; }
+  </style>
+</head>
+<body>
+  <header><strong>Disaster Recovery Portal</strong></header>
+  <main>
+    <h1>Evidence requests</h1>
+    <p class="intro">Read-only demo with fictional projects and requests.</p>
+    <ul aria-label="Evidence request queue">
+      {% for item in evidence_requests %}
+      <li>
+        <p class="project">{{ item.project }}</p>
+        <div class="row">
+          <h2>{{ item.evidence }}</h2>
+          <span class="status {{ item.status | lower | replace(' ', '-') }}">{{ item.status }}</span>
+        </div>
+        <p class="description">{{ item.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
+</html>
